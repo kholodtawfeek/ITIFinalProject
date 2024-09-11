@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Product>
+
+<div class="d-flex justify-content-center">
+    <h2>Products Portal</h2>
+</div>
+
+<br />
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="@Url.Content($"~/images/{item.ImagePath}")" style="height:50px;" alt="Product Image" /></td>
+                <td>@item.Title</td>
+                <td>@item.Price</td>
+                <td>@item.Description</td>
+                <td>@item.Quantity</td>
+                <td>@item.category.Name</td>
+                <td>
+                    <a asp-controller="Product" asp-action="ViewDetails" asp-route-id="@item.Id" class="btn btn-primary btn-sm">View</a>
+                    <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <a asp-controller="Product" asp-action="Create" class="btn btn-success my-4">Add Product</a>
+    </tfoot>
+</table>

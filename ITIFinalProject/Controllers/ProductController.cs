@@ -36,7 +36,6 @@ namespace ITIFinalProject.Controllers
         [HttpPost]
         public IActionResult Create(Product product)
         {
-            //Know what does remove do
             ModelState.Remove("category");
             if (!ModelState.IsValid)
             {
@@ -67,7 +66,6 @@ namespace ITIFinalProject.Controllers
         [HttpPost]
         public IActionResult Edit(Product product)
         {
-            //احفظيها و خلاص
             ModelState.Remove("category");
             //if (!ModelState.IsValid)
             //{
